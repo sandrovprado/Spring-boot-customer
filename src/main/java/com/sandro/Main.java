@@ -39,6 +39,16 @@ public class Main {
         return customers;
     }
 
+    @GetMapping("/api/v1/customers/{customerId}") //another endpoint getting individual customers by creating {variable}
+    public Customer getCustomer(@PathVariable("customerId") Integer customerId) { //filter customer by ID using @PathVar annotation
+
+        return customers.stream()
+                .filter(customer -> customer.id.equals(customerId))
+                .findFirst()
+                .orElseThrow(
+                        () -> new IllegalArgumentException("customer with id [%s] not found".formatted(customerId)));
+    }
+
 
     static class Customer {
         private Integer id;
