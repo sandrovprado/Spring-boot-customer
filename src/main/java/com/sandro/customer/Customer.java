@@ -1,11 +1,21 @@
 package com.sandro.customer;
 
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
+@Entity
 public class Customer {
+
+    @Id //primary key annotation
+    @SequenceGenerator(name = "customer_id_sequence",sequenceName = "customer_id_sequence") //generates random id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "customer_id_sequence")
     private Integer id;
+    @Column(nullable = false) //not null
     private String name;
+    @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
     private Integer age;
 
     public Customer() {
@@ -18,6 +28,11 @@ public class Customer {
         this.age = age;
     }
 
+    public Customer(String name, String email, Integer age) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
+    }
 
     public Integer getId() {
         return id;

@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
-public class CustomerDataAccessService implements CustomerDao{
+@Repository("list") //name for @Qualifier
+public class CustomerListDataAccessService implements CustomerDao{
 
     // Fake database
     private static List<Customer> customers;
