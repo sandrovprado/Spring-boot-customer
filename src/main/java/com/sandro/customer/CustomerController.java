@@ -1,5 +1,6 @@
 package com.sandro.customer;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,12 @@ public class CustomerController {
     public void registerCustomer(@RequestBody CustomerRegistrationRequest request){ //@RequestBody includes json object of new customer
         customerService.addCustomer(request);
     }
+
+    @DeleteMapping("{customerId}")
+    public void deleteCustomer(@PathVariable("customerId")Integer customerId){
+        customerService.deleteCustomerById(customerId);
+    }
+
 
 
 }

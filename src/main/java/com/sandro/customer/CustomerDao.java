@@ -9,4 +9,7 @@ public interface CustomerDao {
     Optional<Customer> selectCustomerById(Integer id); //use Optional class b/c id might not be in list
     void insertCustomer(Customer customer);
     boolean existsPersonWithEmail(String email);
+    boolean existsPersonWithId(Integer Id);
+    void deleteCustomerById(Integer customerId);
+
 }
