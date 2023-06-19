@@ -9,6 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 public class Main {
@@ -26,6 +27,8 @@ public class Main {
             List<Customer> customers = List.of(alex,sandro);
             customerRepository.saveAll(customers);
         };
+
+
 
 
 

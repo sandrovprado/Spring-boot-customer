@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository("list") //name for @Qualifier
-public class CustomerListDataAccessService implements CustomerDao{
+public class CustomerListDataAccessService implements CustomerDao {
 
     // Fake database
     private static List<Customer> customers;
@@ -32,5 +32,16 @@ public class CustomerListDataAccessService implements CustomerDao{
                 .findFirst();
         //service class is in charge of throwing exception
 
+    }
+
+    @Override
+    public void insertCustomer(Customer customer) {
+        customers.add(customer);
+    }
+
+    @Override
+    public boolean existsPersonWithEmail(String email) {
+        return customers.stream()
+                .anyMatch(customer -> customer.getEmail().equals(email));
     }
 }

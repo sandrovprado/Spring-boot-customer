@@ -1,13 +1,12 @@
 package com.sandro.customer;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 //API layer (Intercepts client http requests)
 @RestController
+@RequestMapping("/api/v1/customers")
 public class CustomerController {
     private final CustomerService customerService;
 
@@ -17,13 +16,20 @@ public class CustomerController {
 
     //    @RequestMapping(path = "api/v1/customers", method = RequestMethod.GET)
 
-    @GetMapping("/api/v1/customers") //same as @RequestMapping
+    @GetMapping() //Root path in @RequestMapping
     public List<Customer> getCustomers() {
         return customerService.getAllCustomers();
     }
 
-    @GetMapping("/api/v1/customers/{customerId}") //another endpoint getting individual customers by creating {variable}
+    @GetMapping("/{customerId}") //another endpoint getting individual customers by creating {variable}
     public Customer getCustomer(@PathVariable("customerId") Integer customerId) { //filter customer by ID using @PathVar annotation
         return customerService.getCustomer(customerId);
     }
+
+    @PostMapping()//Root path in @RequestMapping
+    public void registerCustomer(@RequestBody CustomerRegistrationRequest request){ //@RequestBody includes json object of new customer
+        customerService.addCustomer(request);
+    }
+
+
 }

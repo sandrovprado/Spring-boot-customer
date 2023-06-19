@@ -7,4 +7,6 @@ import java.util.Optional;
 public interface CustomerDao {
     List<Customer> selectAllCustomers();
     Optional<Customer> selectCustomerById(Integer id); //use Optional class b/c id might not be in list
+    void insertCustomer(Customer customer);
+    boolean existsPersonWithEmail(String email);
 }

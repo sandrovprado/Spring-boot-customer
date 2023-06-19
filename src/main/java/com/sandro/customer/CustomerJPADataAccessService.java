@@ -16,11 +16,22 @@ public class CustomerJPADataAccessService implements CustomerDao{
 
     @Override
     public List<Customer> selectAllCustomers() {
-        return customerRepository.findAll();
+        return customerRepository.findAll(); //function from JPA repo interface
     }
 
     @Override
     public Optional<Customer> selectCustomerById(Integer id) {
-        return Optional.empty();
+        return customerRepository.findById(id); //function from JPA repo interface
+    }
+
+    @Override
+    public void insertCustomer(Customer customer) {
+        customerRepository.save(customer); //function from JPA repo interface
+    }
+
+    @Override
+    public boolean existsPersonWithEmail(String email) {
+        return customerRepository.existsCustomersByEmail(email);
+
     }
 }
