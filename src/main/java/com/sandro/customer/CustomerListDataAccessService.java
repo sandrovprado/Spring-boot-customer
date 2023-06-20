@@ -59,4 +59,9 @@ public class CustomerListDataAccessService implements CustomerDao {
                 .ifPresent(customers::remove);
 
     }
+
+    @Override
+    public void updateCustomer(Customer update) {
+        customers.add(update);
+    }
 }
