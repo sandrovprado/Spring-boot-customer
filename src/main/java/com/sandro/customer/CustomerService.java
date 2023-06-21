@@ -14,7 +14,7 @@ public class CustomerService {
 
     private final CustomerDao customerDao;
 
-    public CustomerService(@Qualifier("jpa") CustomerDao customerDao) { //@Qualifier to inject specific data access service
+    public CustomerService(@Qualifier("jdbc") CustomerDao customerDao) { //@Qualifier to inject specific data access service
         this.customerDao = customerDao;
     }
 
