@@ -1,5 +1,7 @@
 package com.sandro;
 
+import com.github.javafaker.Faker;
+import com.github.javafaker.Name;
 import com.sandro.customer.Customer;
 import com.sandro.customer.CustomerRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -10,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @SpringBootApplication
 public class Main {
@@ -19,17 +22,21 @@ public class Main {
     }
 
     @Bean
-    CommandLineRunner runner(CustomerRepository customerRepository){
+    CommandLineRunner runner(CustomerRepository customerRepository) {
         return args -> {
-            Customer sandro = new Customer("Sandro", "sandro@gmail.com", 25);
-            Customer alex = new Customer("Alex", "Alex@gmail.com", 21);
+            Faker faker = new Faker();
+            Random random = new Random();
+            Name name = faker.name();
+            String firstName = name.firstName();
+            String lastName = name.lastName();
+            Customer customer = new Customer(
+                    firstName + " " + lastName,
+                    firstName.toLowerCase() + "." +lastName.toLowerCase() + "@gmail.com",
+                    random.nextInt(16, 99));
 
-            List<Customer> customers = List.of(alex,sandro);
-            customerRepository.saveAll(customers);
+
+            customerRepository.save(customer);
         };
-
-
-
 
 
     }

@@ -5,11 +5,19 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table(
+        name = "customer",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "customer_email_unique",
+                        columnNames = "email")
+            }
+        )
 public class Customer {
 
     @Id //primary key annotation
-    @SequenceGenerator(name = "customer_id_sequence",sequenceName = "customer_id_sequence") //generates random id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "customer_id_sequence")
+    @SequenceGenerator(name = "customer_id_seq",sequenceName = "customer_id_seq",allocationSize = 1) //generates random id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "customer_id_seq")
     private Integer id;
     @Column(nullable = false) //not null
     private String name;
