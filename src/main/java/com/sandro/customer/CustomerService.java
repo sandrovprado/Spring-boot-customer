@@ -50,37 +50,37 @@ public class CustomerService {
 
     }
 
-   public void updateCustomer(Integer customerId,CustomerUpdateRequest customerUpdateRequest){
+    public void updateCustomer(Integer customerId, CustomerUpdateRequest customerUpdateRequest) {
         Customer customer = getCustomer(customerId);
 
         boolean changes = false;
 
         //if customer is not null and updated value != original value
 
-        if(customerUpdateRequest.name() !=null && !customerUpdateRequest.name().equals(customer.getName())){
+        if (customerUpdateRequest.name() != null && !customerUpdateRequest.name().equals(customer.getName())) {
             customer.setName(customerUpdateRequest.name());
             changes = true;
         }
-       if(customerUpdateRequest.age() !=null && !customerUpdateRequest.age().equals(customer.getAge())){
-           customer.setAge(customerUpdateRequest.age());
-           changes = true;
-       }
-       if(customerUpdateRequest.email() !=null && !customerUpdateRequest.email().equals(customer.getEmail())){
-           if(customerDao.existsPersonWithEmail(customerUpdateRequest.email())){
-               throw new DuplicateResourceException("Email already taken!");
-           }
-           customer.setEmail(customerUpdateRequest.email());
-           changes = true;
-       }
+        if (customerUpdateRequest.age() != null && !customerUpdateRequest.age().equals(customer.getAge())) {
+            customer.setAge(customerUpdateRequest.age());
+            changes = true;
+        }
+        if (customerUpdateRequest.email() != null && !customerUpdateRequest.email().equals(customer.getEmail())) {
+            if (customerDao.existsPersonWithEmail(customerUpdateRequest.email())) {
+                throw new DuplicateResourceException("Email already taken!");
+            }
+            customer.setEmail(customerUpdateRequest.email());
+            changes = true;
+        }
 
-       if(!changes){
-           throw new RequestValidationException("No data changes found");
-       }
+        if (!changes) {
+            throw new RequestValidationException("No data changes found");
+        }
 
-       customerDao.updateCustomer(customer);
+        customerDao.updateCustomer(customer);
 
 
-   }
+    }
 
 
 }

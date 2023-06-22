@@ -85,7 +85,7 @@ public class CustomerJDBCDataAccessService implements CustomerDao {
                 FROM customer
                 WHERE id = ?
                 """;
-        int result = jdbcTemplate.update(sql, customerId);
+        int result = jdbcTemplate.update(sql, customerRowMapper, customerId);
         System.out.println("deletedCustomerById result = " + result);
 
     }
@@ -107,5 +107,9 @@ public class CustomerJDBCDataAccessService implements CustomerDao {
             int result = jdbcTemplate.update(sql, update.getAge(),update.getId());
             System.out.println("update customer age result = " + result);
         }
+
+
+
+
     }
 }
