@@ -1,7 +1,6 @@
 package com.sandro.customer;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -42,11 +41,17 @@ public class CustomerJDBCDataAccessService implements CustomerDao {
     @Override
     public void insertCustomer(Customer customer) {
         var sql = """
-                INSERT INTO Customer (name,email,age) 
-                VALUES(?,?,?);
+                INSERT INTO customer(name, email, age)
+                VALUES (?, ?, ?)
                 """;
-        int result = jdbcTemplate.update(sql, customer.getName(), customer.getEmail(), customer.getAge());
-        System.out.println("jdbcTemplate.update= " + result);
+        int result = jdbcTemplate.update(
+                sql,
+                customer.getName(),
+                customer.getEmail(),
+                customer.getAge()
+        );
+
+        System.out.println("insertCustomer result " + result);
     }
 
 
@@ -85,7 +90,7 @@ public class CustomerJDBCDataAccessService implements CustomerDao {
                 FROM customer
                 WHERE id = ?
                 """;
-        int result = jdbcTemplate.update(sql, customerRowMapper, customerId);
+        int result = jdbcTemplate.update(sql, customerId);
         System.out.println("deletedCustomerById result = " + result);
 
     }
