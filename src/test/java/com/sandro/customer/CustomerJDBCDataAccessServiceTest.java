@@ -32,7 +32,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         // Given
         Customer customer = new Customer( //need to create at least 1 customer before selecting all
                 FAKER.name().fullName(),
-                FAKER.internet().safeEmailAddress()+ " "+UUID.randomUUID(),
+                FAKER.internet().safeEmailAddress() + " " + UUID.randomUUID(),
                 20
         );
         underTest.insertCustomer(customer);
@@ -66,7 +66,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         Optional<Customer> actualCustomer = underTest.selectCustomerById(id);
 
         // Then
-        assertThat(actualCustomer).isPresent().hasValueSatisfying(c->{
+        assertThat(actualCustomer).isPresent().hasValueSatisfying(c -> {
             assertThat(c.getId()).isEqualTo(id);
             assertThat(c.getName()).isEqualTo(customer.getName());
             assertThat(c.getEmail()).isEqualTo(customer.getEmail());
@@ -89,10 +89,20 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
     @Test
     void insertCustomer() {
         // Given
+        Customer customer = new Customer(
+                FAKER.name().fullName(),
+                FAKER.internet().safeEmailAddress() + " " + UUID.randomUUID(),
+                20
+        );
+        underTest.insertCustomer(customer);
 
         // When
+        List<Customer> actualCustomers = underTest.selectAllCustomers();
 
         // Then
+        assertThat(actualCustomers).isNotEmpty();
+
+
     }
 
     @Test
@@ -216,7 +226,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         // Then
         Optional<Customer> actualCustomer = underTest.selectCustomerById(id);
 
-        assertThat(actualCustomer).isPresent().hasValueSatisfying(c->{
+        assertThat(actualCustomer).isPresent().hasValueSatisfying(c -> {
             assertThat(c.getId()).isEqualTo(id);
             assertThat(c.getName()).isEqualTo(newName); //updated name
             assertThat(c.getEmail()).isEqualTo(customer.getEmail());
@@ -254,7 +264,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         // Then
         Optional<Customer> actualCustomer = underTest.selectCustomerById(id);
 
-        assertThat(actualCustomer).isPresent().hasValueSatisfying(c->{
+        assertThat(actualCustomer).isPresent().hasValueSatisfying(c -> {
             assertThat(c.getId()).isEqualTo(id);
             assertThat(c.getEmail()).isEqualTo(newEmail); //updated name
             assertThat(c.getName()).isEqualTo(customer.getName());
@@ -263,7 +273,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
     }
 
     @Test
-    void updateCustomerAgel() {
+    void updateCustomerAge() {
         // Given
         String email = FAKER.internet().safeEmailAddress() + " " + UUID.randomUUID();
         Customer customer = new Customer(
@@ -292,7 +302,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         // Then
         Optional<Customer> actualCustomer = underTest.selectCustomerById(id);
 
-        assertThat(actualCustomer).isPresent().hasValueSatisfying(c->{
+        assertThat(actualCustomer).isPresent().hasValueSatisfying(c -> {
             assertThat(c.getId()).isEqualTo(id);
             assertThat(c.getAge()).isEqualTo(newAge); //update age
             assertThat(c.getName()).isEqualTo(customer.getName());
@@ -345,6 +355,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         );
         underTest.insertCustomer(customer);
 
+
         int id = underTest.selectAllCustomers()
                 .stream()
                 .filter(c -> c.getEmail().equals(email))
@@ -360,7 +371,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         // Then
         Optional<Customer> actualCustomer = underTest.selectCustomerById(id);
 
-        assertThat(actualCustomer).isPresent().hasValueSatisfying(c->{
+        assertThat(actualCustomer).isPresent().hasValueSatisfying(c -> {
             assertThat(c.getId()).isEqualTo(id);
             assertThat(c.getAge()).isEqualTo(customer.getAge());
             assertThat(c.getName()).isEqualTo(customer.getName());

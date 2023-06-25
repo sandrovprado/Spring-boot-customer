@@ -19,7 +19,7 @@ public abstract class AbstractTestcontainers {
 
     @BeforeAll
     static void beforeAll() {
-        Flyway flyway = Flyway
+        Flyway flyway = Flyway  //implement flyway schemas
                 .configure()
                 .dataSource(
                         postgreSQLContainer.getJdbcUrl(),
@@ -52,7 +52,7 @@ public abstract class AbstractTestcontainers {
         );
     }
 
-    protected static DataSource getDataSource() {
+    private static DataSource getDataSource() {
         return DataSourceBuilder.create()
                 .driverClassName(postgreSQLContainer.getDriverClassName())
                 .url(postgreSQLContainer.getJdbcUrl())
