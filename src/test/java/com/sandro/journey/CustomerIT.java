@@ -1,7 +1,6 @@
 package com.sandro.journey;
 
 import com.github.javafaker.Faker;
-import com.github.javafaker.Name;
 import com.sandro.customer.Customer;
 import com.sandro.customer.CustomerRegistrationRequest;
 import com.sandro.customer.CustomerUpdateRequest;
@@ -21,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-public class CustomerIntegrationTest {
+public class CustomerIT {
 
     @Autowired
     private WebTestClient webTestClient; //Postman
