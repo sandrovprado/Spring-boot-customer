@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "sandro-api",
-      "image": "sandrovprado/sandro-api:05.07.2023.19.07.29",
+      "image": "sandrovprado/sandro-api:05.07.2023.21.40.59",
       "essential": true,
       "memory": 512,
       "portMappings": [
