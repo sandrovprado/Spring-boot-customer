@@ -26,3 +26,46 @@ The project exposes the following RESTful API endpoints:
 | age       | Integer   | Not null                                | Age of the customer                    |
 
 
+## Running the Project Locally
+
+To run the `Spring-boot-customer` project on your local machine, follow these steps:
+
+1. **Prerequisites:**
+   - Java Development Kit (JDK) installed on your machine (Java 8 or higher)
+   - Maven build tool installed (version 3.6.0 or higher)
+   - Git installed
+
+2. **Clone the Repository:**
+   - Open a terminal or command prompt.
+   - Clone the repository using Git:
+     ```
+     git clone https://github.com/sandrovprado/Spring-boot-customer.git
+     ```
+
+3. **Build the Project:**
+   - Navigate to the project directory:
+     ```
+     cd Spring-boot-customer/backend
+     ```
+   - Build the project using Maven:
+     ```
+     ./mvnw clean install
+     ```
+
+4. **Run the Application:**
+   - Start the Spring Boot application:
+     ```
+     ./mvnw spring-boot:run
+     ```
+   - Once the application is running, you can access it in your web browser at: `http://localhost:8080`
+
+5. **Testing:**
+   - To run the tests, use the following command:
+     ```
+     ./mvnw test
+     ```
+   - The tests will be executed, and the results will be displayed in the console.
+
+
+
+
