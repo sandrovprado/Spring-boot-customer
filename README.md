@@ -13,3 +13,14 @@ The project exposes the following RESTful API endpoints:
 | POST   | `/api/customers`        | Create a new customer                         |
 | PUT    | `/api/customers/{customerID}`   | Update an existing customer                   |
 | DELETE | `/api/customers/{customerID}`   | Delete a customer by ID      
+
+
+
+# Customer Table 
+
+Customer
+-------------------------
+-id: Integer (Primary Key, Auto-incrementing)
+-name: String (Not Null)
+-email: String (Not Null, Unique)
+-age: Integer (Not Null)
