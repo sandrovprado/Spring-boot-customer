@@ -15,17 +15,6 @@ The project exposes the following RESTful API endpoints:
 | DELETE | `/api/customers/{customerID}`   | Delete a customer by ID      
 
 
-
-# Customer Table 
-
-| Column    | Data Type | Constraints                             | Description                            |
-|-----------|-----------|-----------------------------------------|----------------------------------------|
-| id        | Integer   | Primary key (auto-increments by 1)      | Unique identifier for the customer     |
-| name      | String    | Not null                                | Name of the customer                   |
-| email     | String    | Not null, Unique                        | Email address of the customer          |
-| age       | Integer   | Not null                                | Age of the customer                    |
-
-
 ## Running the Project Locally
 
 To run the `Spring-boot-customer` project on your local machine, follow these steps:
