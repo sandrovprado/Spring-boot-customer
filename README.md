@@ -18,12 +18,11 @@ The project exposes the following RESTful API endpoints:
 
 # Customer Table 
 
-+---------------------+
-|      Customer       |
-+---------------------+
-|     id: Integer     | Primary key (auto-increments by 1, unique identifier for the customer)
-|   name: String      | Not null 
-|  email: String      | Not null, Unique 
-|   age: Integer      | Not null 
-+---------------------+
+| Column    | Data Type | Constraints                             | Description                            |
+|-----------|-----------|-----------------------------------------|----------------------------------------|
+| id        | Integer   | Primary key (auto-increments by 1)      | Unique identifier for the customer     |
+| name      | String    | Not null                                | Name of the customer                   |
+| email     | String    | Not null, Unique                        | Email address of the customer          |
+| age       | Integer   | Not null                                | Age of the customer                    |
+
 
