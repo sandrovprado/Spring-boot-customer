@@ -1,6 +1,6 @@
 # Spring Boot Customer
 
-This is a sample project called "Spring Boot Customer" that demonstrates a basic implementation of a customer management system using Spring Boot. The project provides RESTful APIs for creating, retrieving, updating, and deleting customer information.
+This is a sample project called "Spring Boot Customer" that demonstrates a basic implementation of a customer management system using Spring Boot. The project provides RESTful APIs for creating, retrieving, updating, and deleting customer information. The front-end portion of this project is in progress.
 
 ## API Endpoints
 
