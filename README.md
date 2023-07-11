@@ -46,7 +46,7 @@ To run the `Spring-boot-customer` project on your local machine, follow these st
      ```
      ./mvnw spring-boot:run
      ```
-   - Once the application is running, you can access it in your web browser at: `http://localhost:8080`
+   - Once the application is running, you can access it in your web browser at: `http://localhost:8080/api/customers`
 
 5. **Testing:**
    - To run the tests, use the following command:
