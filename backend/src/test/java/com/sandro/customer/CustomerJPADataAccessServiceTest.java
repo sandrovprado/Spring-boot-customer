@@ -1,16 +1,11 @@
 package com.sandro.customer;
 
-import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 
 
@@ -61,8 +56,8 @@ class CustomerJPADataAccessServiceTest {
        Customer customer = new Customer(
                "testName",
                "testEmail",
-               24
-       );
+               24,
+               Gender.MALE);
 
         // When
 
@@ -111,7 +106,7 @@ class CustomerJPADataAccessServiceTest {
     @Test
     void updateCustomer() {
         // Given
-        Customer updateCustomer = new Customer("update","update@gmail.com",30);
+        Customer updateCustomer = new Customer("update","update@gmail.com",30, Gender.MALE);
 
         // When
         underTest.updateCustomer(updateCustomer);
