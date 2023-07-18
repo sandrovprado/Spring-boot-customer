@@ -50,6 +50,7 @@ const App = () => {
                     <WrapItem key={index}>
                         <CardWithImage
                             {...customer}
+                            imgNumber={index}
                             // name={customer.name}
                             // age={customer.age}
                             // email={customer.email}

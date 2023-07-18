@@ -29,7 +29,7 @@ public class CustomerJDBCDataAccessService implements CustomerDao {
     @Override
     public Optional<Customer> selectCustomerById(Integer id) {
         var sql = """
-                SELECT id,name,email,age, gender
+                SELECT id,name,email,age,gender
                 FROM customer 
                 WHERE id = ?
                 """;
