@@ -26,6 +26,16 @@ services:
     depends_on:
       - db
     restart: unless-stopped
+  sandro-customer-react:
+    container_name: sandro-customer-react
+    image: sandrovprado/sandro-customer-react
+    build:
+      context: frontend/react
+    ports:
+      - "3000:5173"
+    depends_on:
+      - sandro-api
+    restart: unless-stopped
 
 networks:
   db:
